@@ -5,7 +5,7 @@ import {VideoCard,ChannelCard} from '../components'
 const Videos = ({videos,direction}) => {
     // console.log(videos)
   return (
-    <Stack direction={direction||'row'} flexWrap="wrap" justifyContent="start" gap={2} >
+    <Stack direction={direction||'row'} flexWrap="wrap" justifyContent="center" gap={2} >
       
       {videos.map((item,index)=>(
          <Box key={index} > 
