@@ -4,7 +4,7 @@ import {Box} from '@mui/material';
 import './index.css'
 import {Feed,Navbar,VideoDetail,SearchFeed,ChannelDetail} from "./components"
 import LoadingBar from 'react-top-loading-bar';
-import LoadingContextProvider from './context/loading/LoadingContextProvider';
+
 
 
 const App = () => {
