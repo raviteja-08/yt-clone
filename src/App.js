@@ -19,7 +19,7 @@ const App = () => {
         <Box sx ={{background:'white'}} >
           <LoadingBar color='blue' progress={loadingProgress} />
           <Navbar/>
-
+           
           <Routes>
 
             <Route path="/" exact element={<Feed nextPageToken={nextPageToken} setNextPageToken={setNextPageToken} setLoadingProgress={setLoadingProgress}/>} />
