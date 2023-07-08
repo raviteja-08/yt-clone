@@ -22,8 +22,8 @@ const SideBar = (props) => {
           
           
               
-            <span style={{color:curCategory.name===props.selectedCategory ?'white':'red',marginRight:'15px'}}  >{curCategory.icon}</span>
-            <span style={{color:curCategory.name===props.selectedCategory ?'white':'black'}}>{curCategory.name}</span>
+            <span style={{color:curCategory.name===props.selectedCategory ?'white':'blue',marginRight:'15px'}}  >{curCategory.icon}</span>
+            <span style={{color:curCategory.name===props.selectedCategory ?'white':'blue'}}>{curCategory.name}</span>
            
           
           

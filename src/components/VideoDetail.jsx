@@ -6,21 +6,24 @@ import { CheckCircle } from '@mui/icons-material'
 import { ApiCall } from '../utils/ApiCall'
 import {Videos} from './'
 
-const VideoDetail = () => {
+const VideoDetail = ({setLoadingProgress}) => {
   const [video,setVideo]=useState(null);
   const [videos,setVideos]=useState([]);
   const {id} = useParams();
   useEffect(()=>{
+    setLoadingProgress(10)
        ApiCall(`videos?part=snippet,statistics&id=${id}`)
        .then((res)=>{
             console.log(res?.data?.items[0])
             setVideo(res?.data?.items[0]);
+            setLoadingProgress(60);
        })
 
        ApiCall(`search?.part=snippet&relatedToVideoId=${id}&type=video`)
        .then((res)=>{
             console.log(res.data.items);
             setVideos(res.data.items);
+            setLoadingProgress(100);
        })
   },[id]) 
 
@@ -35,9 +38,9 @@ const VideoDetail = () => {
                      {video?.snippet?.title}
                    </Typography>
 
-                   <Stack direction={'row'} justifyContent={'space-between'} sx={{}} py={1} px={2}>
+                   <Stack direction={'row'} justifyContent={'space-between'} sx={{flexWrap:"wrap"}} py={1} px={2}>
                       <Link to={`/channel/${video?.snippet?.channelId}`}>
-                        <Typography variant={{sm:'subtitle1',md:'h6'}} sx={{display:'flex'}} >
+                        <Typography variant={{sm:'subtitle2',md:'h6'}} sx={{display:'flex'}} >
                           {video?.snippet?.channelTitle}
                           <CheckCircle sx={{color:'blue',fontSize:'22px'}} />
                         </Typography>

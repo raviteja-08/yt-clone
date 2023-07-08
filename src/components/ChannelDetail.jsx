@@ -7,7 +7,7 @@ import {ChannelCard,Videos} from './';
 
 
 
-const ChannelDetail = () => {
+const ChannelDetail = ({setLoadingProgress}) => {
   // const id  ???? 
   const {id} = useParams();
   const [channel,setChannel] = useState(null);
@@ -16,16 +16,19 @@ const ChannelDetail = () => {
   
 
   useEffect(()=>{
+    setLoadingProgress(0);
        ApiCall(`channels?.part=snippet&id=${id}`)
        .then((data)=>{
         setChannel(data?.data?.items[0]);
         // console.log(channel)
+        
        })
-
+       setLoadingProgress(70);
        ApiCall(`search?channelId=${id}&part=snippet&order=date`)
        .then(res=>{
          setVideos(res.data.items)
         // console.log(res.data.items);
+        setLoadingProgress(100);
        })
       
 
@@ -39,7 +42,7 @@ const ChannelDetail = () => {
         </div>
         <div id='channel-card-on-channel-detail' >
 
-           <ChannelCard channel={channel} marginTop='-101px' />
+           <ChannelCard channel={channel} marginTop='-100px' />
         </div>
         <div className="">
           { videos && <Videos videos = {videos} />}

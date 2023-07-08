@@ -1,23 +1,27 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import {useState,useEffect} from 'react';
 import {Box,Stack,Typography} from '@mui/material'
 import {Loading, SideBar,Videos} from '../components'
 import { ApiCall } from '../utils/ApiCall';
 import InfiniteScroll from 'react-infinite-scroll-component';
 
-const Feed = ({nextPageToken,setNextPageToken}) => {
-  
+
+const Feed = ({nextPageToken,setNextPageToken,setLoadingProgress}) => {
   const [videos,setVideos] = useState([])
   const [loading,setLoading] = useState(false)
-  const [selectedCategory,setSelectedCategory]=useState('AI')
+  const [selectedCategory,setSelectedCategory]=useState('Machine Learning')
+
+ 
+
   useEffect(()=>{
     setLoading(true);
+    setLoadingProgress(40);
      ApiCall(`search?part=snippet&q=${selectedCategory}&pageToken=${nextPageToken}`)
      .then((res)=>{
+       setLoadingProgress(80);
        setVideos(res.data.items);
-       console.log(res);
-       console.count("useEffect..")
        setNextPageToken(res.data.nextPageToken);
+       setLoadingProgress(100);
       })
       setLoading(false)
     },[selectedCategory])
@@ -56,7 +60,7 @@ const Feed = ({nextPageToken,setNextPageToken}) => {
      <Box p={2}  sx={{overflowY:'auto' , height:'90vh',justifyContent:'center'}} >
          
          <Typography variant='h4' 
-             fontWeight='bold' md={2} sx={{color:'black'}} >
+             fontWeight='bold' md={2} sx={{color:'black',textAlign:"center"}} >
              <span  > {selectedCategory}  </span>
              <span style={{color:'blue'}} >
               videos
