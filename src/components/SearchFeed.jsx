@@ -5,17 +5,23 @@ import {SideBar,Videos} from '../components'
 import { ApiCall } from '../utils/ApiCall';
 import { useParams } from 'react-router-dom';
 
+
 const SearchFeed = () => {
   const {searchTerm} = useParams()
 
   const [videos,setVideos] = useState([])
+  
+
   useEffect(()=>{
      ApiCall(`search?part=snippet&q=${searchTerm}`)
      .then((res)=>{
-      
+     
        setVideos(res.data.items);
+      
      })
   },[searchTerm])
+
+
 
   return (
     <Box p={2}  sx={{overflowY:'auto' , height:'90vh',justifyContent:'center'}} >
@@ -28,6 +34,7 @@ const SearchFeed = () => {
              <span  > {searchTerm}  </span>
          </Typography>
         <div >
+        
          <Videos videos={videos} />
           
           </div>  
@@ -36,4 +43,5 @@ const SearchFeed = () => {
   )
 }
 
-export default SearchFeed
+
+export default SearchFeed;

@@ -32,7 +32,7 @@ const Feed = ({nextPageToken,setNextPageToken,setLoadingProgress}) => {
       ApiCall(`search?part=snippet&q=${selectedCategory}&pageToken=${nextPageToken}`)
       .then((res)=>{
         setVideos(videos.concat(res.data.items))
-        console.log(res);
+        
         
         setNextPageToken(res.data.nextPageToken);
       })
@@ -71,7 +71,7 @@ const Feed = ({nextPageToken,setNextPageToken,setLoadingProgress}) => {
          <InfiniteScroll
              dataLength={videos.length}
              next={fetchMoreData}
-             hasMore={videos.length<400}
+             hasMore={videos.length<1000}
              loader={<Loading/>}
          >
          {  <Videos videos={videos} />}

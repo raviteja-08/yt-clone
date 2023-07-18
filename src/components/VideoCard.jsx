@@ -12,12 +12,13 @@ const VideoCard = ({video}) => {
     // console.log(video)
 
   return (
-    <Card sx={{width:'290px',boxShadow:'none'}}>
+    <Card sx={{width:'290px',boxShadow:'none'}} className='videoCard-whole'>
       <Link to={video.id.videoId ? `/video/${video.id.videoId}`:demoVideoUrl} >
        <CardMedia 
          alt=''
+         className='videoCard-thumbnail'
          sx={{width:'100%',height:180}}
-         image={video.snippet?.thumbnails?.high?.url||demoThumbnailUrl} />
+         image={video.snippet?.thumbnails?.high?.url} />
       </Link>
       <CardContent sx={{height:'116px' }}>
         <Link to={video.id.videoId ? `/video/${video.id.videoId}`:demoVideoUrl}>

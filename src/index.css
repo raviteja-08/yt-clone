@@ -110,3 +110,59 @@ a {
   overflow-y: scroll;
   height: 100vh;
 }
+.playlist-card-parent{
+  position: retlative;
+}
+.playlist-thumbnail{
+     position: relative;
+     z-index: 2;
+}
+.playlist-thumbnail:hover{
+    z-index: 0;
+}
+.playlist-card-dark{
+  height: 180px;
+  width: 100%;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+  color: white;
+}
+.playlist-card-dark:hover{
+  z-index: 3;
+  background-color: rgba(82, 79, 79, 0.593);
+}
+.videoCard-thumbnail{
+  border-radius: 10px;
+}
+.videoCard-thumbnail:hover{
+  transition-duration: 0.5s;
+  border-radius: 0px;
+}
+.videoCard-whole:hover{
+    background-color: rgba(18, 17, 17, 0.071);
+}
+
+@media screen and (max-width:640px){
+  #logo-text{
+    position: fixed;
+    
+    z-index: -10;
+    
+    color: white;
+  }
+}
+@media screen and (min-width:450px) and (max-width:600px){
+  #logo-text{
+    position: static;
+    color: black;
+    
+  }
+}
+@media screen and (max-width:940px){
+  #channel-card-margin-top{
+    margin-top: 0px;
+  }
+}

@@ -1,11 +1,11 @@
 import React from 'react'
-
+import Rolling from '../utils/Rolling.gif'
 const Loading = () => {
   return (
-    <div   >
-      <img className='loading-gif' src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif?20151024034921" alt="Loading.." />
+    <div style={{display:"block",display:'flex',justifyContent:'center'}}  >
+      <img className='loading-gif' style={{height:"150px",width:"150px"}} src={Rolling} alt="Loading.." />
     </div>
   )
 }
 
-export default Loading
+export default Loading;
